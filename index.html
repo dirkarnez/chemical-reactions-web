@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <script>
+        // Javascript program to balance
+        // the given Chemical Equation
+
+        // Function to calculate GCD
+        function gcd(a, b) {
+            if (b == 0)
+                return a;
+            return gcd(b, a % b);
+        }
+
+        // Function to calculate b1, b2 and b3
+        function balance(x, y, p, q) {
+            // Variable declaration
+            let b1, b2, b3;
+
+            if (p % x == 0 && q % y == 0) {
+                b1 = p / x;
+                b2 = q / y;
+                b3 = 1;
+            }
+
+            else {
+                p = p * y;
+                q = q * x;
+                b3 = x * y;
+
+                // temp variable to store gcd
+                let temp = gcd(p, gcd(q, b3));
+
+                // Computing GCD
+                b1 = p / temp;
+                b2 = q / temp;
+                b3 = b3 / temp;
+            }
+
+            document.write(b1 + " " + b2
+                + " " + b3 + "\n");
+        }
+
+        // Driver Code
+
+        let x = 2, y = 3, p = 4, q = 5;
+
+        //b1 Ax + b2 By -> b3 Ap Bq
+        
+        balance(1, 2, 1, 1);
+        // 2 1 2
+
+
+        /*
+        At standard conditions hydrogen is a gas of diatomic molecules having the formula H2
+        At standard temperature and pressure, two atoms of the element bind to form dioxygen, a colorless and odorless diatomic gas with the formula O2
+        */
+        /*
+        H2(1) + O2(2) = H2O
+        */
+        // [How to balance H2 + O2 = H2O - YouTube](https://www.youtube.com/watch?v=7Jm8TXzAoqE)
+        balance(2, 2, 2, 1);
+        // 2 1 2
+        // 2H2 + 1O2 => 2H2 1O
+
+    </script>
+</body>
+
+</html>
