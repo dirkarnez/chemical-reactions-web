@@ -25,6 +25,8 @@
 - [Chemical Equations online!](https://chemequations.com/en/)
 - [PubChem](https://pubchem.ncbi.nlm.nih.gov/)
 - [Molar Ratio Calculator](https://www.omnicalculator.com/chemistry/molar-ratio)
+- [Elements, Chemicals and Chemistry - ChemicalAid - ⚛️🧪⚗️👨‍🔬](https://www.chemicalaid.com/)
+- [TingyiZhang/Molecule-Database: A database that is attuned to information about molecules.](https://github.com/TingyiZhang/Molecule-Database)
 
 ### Tutorials
 - [11.4: Combination Reactions - Chemistry LibreTexts](https://chem.libretexts.org/Bookshelves/Introductory_Chemistry/Introductory_Chemistry_(CK-12)/11%3A_Chemical_Reactions/11.04%3A_Combination_Reactions)
