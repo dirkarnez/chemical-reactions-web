@@ -27,5 +27,18 @@
 - [Molar Ratio Calculator](https://www.omnicalculator.com/chemistry/molar-ratio)
 
 ### Tutorials
+- [11.4: Combination Reactions - Chemistry LibreTexts](https://chem.libretexts.org/Bookshelves/Introductory_Chemistry/Introductory_Chemistry_(CK-12)/11%3A_Chemical_Reactions/11.04%3A_Combination_Reactions)
+- [Synthesis (Combination) Reaction: Definition, Examples, and Applications](https://www.chemistrylearner.com/chemical-reactions/synthesis-reaction)
+- [Writing and Balancing a chemical equation - YouTube](https://www.youtube.com/watch?v=ZlWGyQ5DrTk)
+- [Combination Reactions - YouTube](https://www.youtube.com/watch?v=o7MSADOiKHI)
+- [Chemical Reactions and Equations - YouTube](https://www.youtube.com/watch?v=Hxd1TNgSuPg)
+- [Diatomic molecule - Wikipedia](https://en.wikipedia.org/wiki/Diatomic_molecule)
+- https://www1.eere.energy.gov/hydrogenandfuelcells/tech_validation/pdfs/fcm01r0.pdf
+- [Predicting The Products of Chemical Reactions - Chemistry Examples and Practice Problems - YouTube](https://www.youtube.com/watch?v=MYmrWHzT1oI)
+- [Types of Chemical Reactions - YouTube](https://www.youtube.com/watch?v=iIJD8RNLpS0)
+- [How to Balance: H2 + O2 = H2O| Breslyn.org](https://www.breslyn.org/chemistry/balancing/public.php?eq_id=2)
+- [Molecular geometry - Wikipedia](https://en.wikipedia.org/wiki/Molecular_geometry)
+- [2.12: Combining Atoms to Make Molecules and Compounds - Chemistry LibreTexts](https://chem.libretexts.org/Bookshelves/Environmental_Chemistry/Green_Chemistry_and_the_Ten_Commandments_of_Sustainability_(Manahan)/02%3A_The_Key_Role_of_Chemistry_and_Making_Chemistry_Green/2.12%3A_Combining_Atoms_to_Make_Molecules_and_Compounds)
+- [5.1: Elements Combine to Form Compounds - Chemistry LibreTexts](https://chem.libretexts.org/Courses/Anoka-Ramsey_Community_College/Introduction_to_Chemistry/05%3A_Chemical_Nomenclature/5.01%3A_Elements_Combine_to_Form_Compounds)
 - [Elements, Chemicals and Chemistry - ChemicalAid - ⚛️🧪⚗️👨‍🔬](https://www.chemicalaid.com/)
 - [What is the difference between an Atom, Element, Molecule and Compound? - YouTube](https://www.youtube.com/watch?v=KSfgSw2WKfU)
