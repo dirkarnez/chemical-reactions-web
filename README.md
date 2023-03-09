@@ -29,6 +29,7 @@
 - [TingyiZhang/Molecule-Database: A database that is attuned to information about molecules.](https://github.com/TingyiZhang/Molecule-Database)
 
 ### Tutorials
+- [How to balance H2 + O2 = H2O - YouTube](https://www.youtube.com/watch?v=7Jm8TXzAoqE)
 - [11.4: Combination Reactions - Chemistry LibreTexts](https://chem.libretexts.org/Bookshelves/Introductory_Chemistry/Introductory_Chemistry_(CK-12)/11%3A_Chemical_Reactions/11.04%3A_Combination_Reactions)
 - [Synthesis (Combination) Reaction: Definition, Examples, and Applications](https://www.chemistrylearner.com/chemical-reactions/synthesis-reaction)
 - [Writing and Balancing a chemical equation - YouTube](https://www.youtube.com/watch?v=ZlWGyQ5DrTk)
