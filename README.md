@@ -20,6 +20,9 @@
             - returns `2 1 2`
          2. `H2 + O2 = H2O` becomes `2H2 + O2 = 2H2O`
 
+### ChatGPT
+> When calculating the product of a chemical reaction, the starting materials and their coefficients are used to determine the number of moles of each reactant. The coefficients of the reactants are multiplied by their respective molar masses, and the products are added together. This calculation yields the mass of the product. The mass of the product is then divided by the molar mass of the product to determine the number of moles of product. The number of moles of product is then multiplied by Avogadro's number to calculate the number of molecules of product.
+
 ### Tools
 - [Program to balance the given Chemical Equation - GeeksforGeeks](https://www.geeksforgeeks.org/program-to-balance-the-given-chemical-equation/)
 - [Chemical Equations online!](https://chemequations.com/en/)
