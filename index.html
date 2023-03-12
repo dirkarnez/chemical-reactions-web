@@ -275,6 +275,8 @@ _ "whitespace"
             });
 
             document.getElementById("calculate").addEventListener("click", () => {
+                document.getElementById("matched").innerText = "";
+                
                 const userInput = $($('#hinted').summernote('code')).text().trim();
 
                 const output = document.getElementById('output');
