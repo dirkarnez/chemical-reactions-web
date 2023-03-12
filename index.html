@@ -6,11 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    
     <!-- include libraries(jQuery, bootstrap) -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+    
     <!-- include summernote css/js -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
@@ -47,6 +49,15 @@
 
         #output>pre {
             margin-left: 5px;
+        }
+
+        #matched {
+            text-align: center;
+            font-size: 120%;
+            margin-top: .75em;
+            border: 1px solid grey;
+            padding: 1.25em;
+            min-height: 2em;
         }
     </style>
 </head>
@@ -114,14 +125,19 @@
         // 2H2 + 1O2 => 2H2 1O
 
     </script>
-
+    
     <div class="container">
         <textarea id="hinted"></textarea>
         <button id="calculate" class="btn btn-primary">Get product by combination</button>
         <div id="output"></div>
+        <div id="matched"></div>
     </div>
     <script>
         const getData = new Promise(res => {
+            /*
+            https://www.quora.com/Why-is-the-molecular-formula-of-sodium-Na-while-that-of-oxygen-O2
+            The only diatomic molecules are H2, N2, O2, F2, Cl2, Br2, and I2.
+            */
             res({
                 periodicTable: [
                     {
@@ -142,26 +158,74 @@
                         symbol: "O",
                         standardDiatomicMolecules: 2
                     },
+                    // {
+                    //     name: "carbon",
+                    //     valency: 4,
+                    //     symbol: "C"
+                    // },
+                    // {
+                    //     name: "uranium",
+                    //     valency: NaN, // TODO
+                    //     symbol: "U"
+                    // },
                     {
-                        name: "carbon",
-                        valency: 4,
-                        symbol: "C"
+                        name: "nitrogen",
+                        valency: 3,
+                        symbol: "N",
+                        standardDiatomicMolecules: 2
                     },
                     {
-                        name: "uranium",
-                        valency: NaN, // TODO
-                        symbol: "U"
+                        name: "sodium",
+                        valency: 1,
+                        symbol: "Na",
+                        standardDiatomicMolecules: NaN
                     },
                     {
-                        name: "Nitrogen",
-                        valency: NaN, // TODO
-                        symbol: "N"
-                    },
+                        name: "chlorine",
+                        valency: 1,
+                        symbol: "Cl",
+                        standardDiatomicMolecules: 2
+                    }
                 ],
                 compounds: [
                     {
-                        formula: "H2O",
+                        formula: [
+                            {
+                                symbol: "H",
+                                subscript: 2
+                            },
+                            {
+                                symbol: "O",
+                                subscript: 1
+                            }
+                        ],
                         displayName: "water"
+                    },
+                    {
+                        formula: [
+                            {
+                                symbol: "Na",
+                                subscript: 1
+                            },
+                            {
+                                symbol: "Cl",
+                                subscript: 1
+                            }
+                        ],
+                        displayName: "table salt"
+                    },
+                    {
+                        formula:[
+                            {
+                                symbol: "N",
+                                subscript: 1
+                            },
+                            {
+                                symbol: "H",
+                                subscript: 3
+                            }
+                        ],
+                        displayName: "ammonia"
                     }
                 ]
             })
@@ -239,8 +303,8 @@ _ "whitespace"
                 //wip.RHS.map(element => `${element.symbol}`).join("");
 
 
-                const Ax = wip.LHS[0].standardDiatomicMolecules;
-                const By = wip.LHS[1].standardDiatomicMolecules;
+                const Ax = !isNaN(wip.LHS[0].standardDiatomicMolecules) ? wip.LHS[0].standardDiatomicMolecules : 1;
+                const By = !isNaN(wip.LHS[1].standardDiatomicMolecules) ? wip.LHS[1].standardDiatomicMolecules : 1;
 
                 wip.RHS = wip.RHS.map((element, index, rhs) => ({...element, swapped: rhs[index == 0 ? 1 : 0].valency}));
 
@@ -251,17 +315,47 @@ _ "whitespace"
 
                 //b1 Ax + b2 By -> b3 Ap Bq
                 const b1b2b3 = balance(Ax, By, Ap, Bq);
-
-                debugger;
+                
+                const RHSCoefficient = b1b2b3[2];
+                const RHSCompound = wip.RHS.map((element) => {
+                    const swapped = element.swapped;
+                    return swapped > 1 
+                    ?
+                    `${element.symbol}_${swapped}`
+                    :
+                    `${element.symbol}`;
+                }).join("");
 
                 // data.periodicTable.filter(element => element.name == userInput)[0].symbol
                 const mathJaxInput = `\\ce{ ${wip.LHS.map((element, index) => { 
                     const coeeficient = b1b2b3[index];
-                    return `${coeeficient > 1 ? coeeficient : ""}${element.symbol}_${element.standardDiatomicMolecules}`
-                }).join(" + ")} -> ${b1b2b3[2]}${wip.RHS.map((element) => {
-                    const swapped =element.swapped;
-                    return `${element.symbol}${swapped > 1 ? swapped : ""}`
-                }).join("")}}`;
+                    return !isNaN(element.standardDiatomicMolecules) ? 
+                    `${coeeficient > 1 ? coeeficient : ""}${element.symbol}_${element.standardDiatomicMolecules}`
+                    :
+                    `${coeeficient > 1 ? coeeficient : ""}${element.symbol}`
+                }).join(" + ")} -> ${RHSCoefficient}${RHSCompound}}`;
+
+                const matched = data.compounds.filter(compound => {
+                    const init = Array(compound.formula.length).fill(false);
+
+                    compound.formula.forEach((element, index) => {
+
+                        wip.RHS.forEach(RHSElement => {
+                            if (element.symbol == RHSElement.symbol &&
+                            element.subscript == RHSElement.swapped) {
+                                init[index] = true;
+                            }
+                        });
+                    });
+
+                    return init.every(item => !!item);
+                });
+
+                document.getElementById("matched").innerText = Array.isArray(matched)
+                    ?
+                    matched.map(ele => ele.displayName).join(",")
+                    :
+                    "";
 
                 window.MathJax.tex2svgPromise(mathJaxInput, options).then(function (node) {
                     //
@@ -275,8 +369,6 @@ _ "whitespace"
                 });
             });
         });
-        
-
     </script>
 </body>
 
