@@ -14,6 +14,20 @@
             loader: {load: ['[tex]/mhchem']},
         };
     </script>
+    
+    <script>
+        // pegjs
+        start
+          = left:integer _ "+" _ right:integer { return left + right; }
+
+        integer "integer"
+          = _ [0-9]+ { return parseInt(text(), 10); }
+
+        _ "whitespace"
+          = [ \t\n\r]*
+     
+    </script>
+         
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
