@@ -126,11 +126,13 @@
 
     </script>
     
-    <div class="container">
+    <div class="container" style="padding-top: 15px;">
         <textarea id="hinted"></textarea>
-        <button id="calculate" class="btn btn-primary">Get product by combination</button>
+        <button id="calculate" class="btn btn-primary">Get product by<br>combination reaction</button>
         <div id="output"></div>
         <div id="matched"></div>
+        <br>
+        <img id="errmeme" class="img-responsive"></img>
     </div>
     <script>
         const getData = new Promise(res => {
@@ -282,7 +284,13 @@ _ "whitespace"
                 var options = window.MathJax.getMetricsFor(output);
                 options.display = true;
 
-                const parsed = parser.parse(userInput);
+                let parsed = [];
+                try {
+                    parsed = parser.parse(userInput);
+                } catch (e) {
+                    document.getElementById("errmeme").src = "womanyellingcat.jpg";
+                }
+                 
                 const wip = parsed.reduce((prev, current) => {
                     const currentElement = data.periodicTable.filter(element => element.name == current)[0];
 
