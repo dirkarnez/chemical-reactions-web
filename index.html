@@ -89,8 +89,7 @@
                 b3 = b3 / temp;
             }
 
-            document.write(b1 + " " + b2
-                + " " + b3 + "\n");
+            return [b1, b2, b3];
         }
 
         // Driver Code
@@ -135,13 +134,13 @@
                         name: "hydrogen",
                         valency: 1,
                         symbol: "H",
-                        standardDiatomicMolecules: "H2" 
+                        standardDiatomicMolecules: 2
                     },
                     {
                         name: "oxygen",
                         valency: 2,
                         symbol: "O",
-                        standardDiatomicMolecules: "O2"
+                        standardDiatomicMolecules: 2
                     },
                     {
                         name: "carbon",
@@ -172,11 +171,11 @@
             const parserCode = `
 start
     = _ left:tokens _ right:(_ "+" _ tokens)*  {
-    return right.reduce(function(result, element) {
-        if (element[1] === "+") { return [...result, element[3]] }
-    }, new Array(left));
+        return right.reduce(function(result, element) {
+            if (element[1] === "+") { return [...result, element[3]] }
+        }, new Array(left));
     }
-    
+
 tokens
     = (${periodicTableNames.map(name => `"${name}"`).join(" / ")}) { return text(); }
 
@@ -220,14 +219,49 @@ _ "whitespace"
                 options.display = true;
 
                 const parsed = parser.parse(userInput);
-                parsed.reduce((prev, current) => {
-                    const currentStandardDiatomicMolecules = data.periodicTable.filter(element => element.name == current)[0].standardDiatomicMolecules;
-                    
+                const wip = parsed.reduce((prev, current) => {
+                    const currentElement = data.periodicTable.filter(element => element.name == current)[0];
 
-                }, "");
+                    return (
+                        {
+                            LHS: [...prev.LHS, currentElement], 
+                            RHS: [...prev.RHS, currentElement], 
+                        }
+                    )
+                }, {LHS: [], RHS: []});
+
+                //'H2 + O2'
+                //wip.LHS.map(element => `${element.symbol}${element.standardDiatomicMolecules}`).join(" + ");
+
+
+
+                //'HO'
+                //wip.RHS.map(element => `${element.symbol}`).join("");
+
+
+                const Ax = wip.LHS[0].standardDiatomicMolecules;
+                const By = wip.LHS[1].standardDiatomicMolecules;
+
+                wip.RHS = wip.RHS.map((element, index, rhs) => ({...element, swapped: rhs[index == 0 ? 1 : 0].valency}));
+
+                const Ap = wip.RHS[0].swapped;
+                const Bq = wip.RHS[1].swapped;
+
+                //b1 Ax + b2 By -> b3 Ap Bq
+
+                //b1 Ax + b2 By -> b3 Ap Bq
+                const b1b2b3 = balance(Ax, By, Ap, Bq);
+
+                debugger;
 
                 // data.periodicTable.filter(element => element.name == userInput)[0].symbol
-                const mathJaxInput = `\\ce{ H2O }`;
+                const mathJaxInput = `\\ce{ ${wip.LHS.map((element, index) => { 
+                    const coeeficient = b1b2b3[index];
+                    return `${coeeficient > 1 ? coeeficient : ""}${element.symbol}_${element.standardDiatomicMolecules}`
+                }).join(" + ")} -> ${b1b2b3[2]}${wip.RHS.map((element) => {
+                    const swapped =element.swapped;
+                    return `${element.symbol}${swapped > 1 ? swapped : ""}`
+                }).join("")}}`;
 
                 window.MathJax.tex2svgPromise(mathJaxInput, options).then(function (node) {
                     //
