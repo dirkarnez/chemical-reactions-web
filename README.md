@@ -27,6 +27,7 @@
 - [ ] [Tetramethyllead - Wikipedia](https://en.wikipedia.org/wiki/Tetramethyllead)
 - [ ] [Chloroethane - Wikipedia](https://en.wikipedia.org/wiki/Chloroethane)
 - [ ] Hill system
+- [ ] [Examples - Apache ECharts](https://echarts.apache.org/examples/en/editor.html?c=matrix-periodic-table)
 
 ### ChatGPT
 > When calculating the product of a chemical reaction, the starting materials and their coefficients are used to determine the number of moles of each reactant. The coefficients of the reactants are multiplied by their respective molar masses, and the products are added together. This calculation yields the mass of the product. The mass of the product is then divided by the molar mass of the product to determine the number of moles of product. The number of moles of product is then multiplied by Avogadro's number to calculate the number of molecules of product.
@@ -56,4 +57,5 @@
 - [5.1: Elements Combine to Form Compounds - Chemistry LibreTexts](https://chem.libretexts.org/Courses/Anoka-Ramsey_Community_College/Introduction_to_Chemistry/05%3A_Chemical_Nomenclature/5.01%3A_Elements_Combine_to_Form_Compounds)
 - [Elements, Chemicals and Chemistry - ChemicalAid - ⚛️🧪⚗️👨‍🔬](https://www.chemicalaid.com/)
 - [What is the difference between an Atom, Element, Molecule and Compound? - YouTube](https://www.youtube.com/watch?v=KSfgSw2WKfU)
+
 
